@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: aa96c6ddc55f84c43870123e1123538f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 236747
+  packageName: 2D Character Sprite Animation - Penguin
+  packageVersion: 1.0
+  assetPath: Assets/Nine Pines Animation/2D Character Sprite Animation - Penguin/Animations/penguin_jump.anim
+  uploadId: 536487

@@ -40,7 +40,7 @@ public class StepCounter : MonoBehaviour
 
     void UpdateUI()
     {
-        stepText.text = "Steps: " + stepCount;
-        distanceText.text = "Distance: " + distanceWalked.ToString("F2") + " m";
+        stepText.text = "" + stepCount;
+        distanceText.text = "" + distanceWalked.ToString("F2") + " m";
     }
 }
