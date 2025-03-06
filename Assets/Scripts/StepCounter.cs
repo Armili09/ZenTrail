@@ -7,8 +7,8 @@ public class StepCounter : MonoBehaviour
     public TextMeshProUGUI stepText;
     public TextMeshProUGUI distanceText;
 
-    private int stepCount = 0;
-    private float distanceWalked = 0f;
+    public int stepCount = 0;
+    public float distanceWalked = 0f;
     private Vector3 lastAcceleration;
     private bool isStepDetected = false;
     private float stepThreshold = 1.5f; // Adjust this value based on sensitivity
@@ -38,7 +38,7 @@ public class StepCounter : MonoBehaviour
         lastAcceleration = currentAcceleration;
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         stepText.text = "" + stepCount;
         distanceText.text = "" + distanceWalked.ToString("F2") + " m";

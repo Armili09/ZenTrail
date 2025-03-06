@@ -1,140 +1,118 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class CanvasManager : MonoBehaviour
 {
-    public GameObject mainMenuCanvas;
-    public GameObject profileCanvas;
-    public GameObject changeGoalsCanvas;
-    public GameObject editProfileCanvas;
+    public GameObject MainMenuCanvas;
+    public GameObject ProfileCanvas;
+    public GameObject ChangeGoalsCanvas;
+    public GameObject CongratsCanvas;
 
-    public Button profileButton;
-    public Button changeGoalsButton;
-    public Button editProfileButton;
-    public Button resetStepsButton;
-    public Button changeGoalsDoneButton;
-    public Button changeGoalsPlusButton;
-    public Button changeGoalsMinusButton;
-    public Button editProfileDoneButton;
-    public Button profileBackButton;
+    public TextMeshProUGUI goalValueText;
+    public StepCounter stepCounter;
 
-    public TMP_InputField editUsernameInputField;
-    public TextMeshProUGUI profileUsernameText;
-    public TextMeshProUGUI mainMenuUsernameText;
-    public TextMeshProUGUI changeGoalsValueText;
+    public Button profileButton; // On MainMenuCanvas
+    public Button changeGoalsButton; // On ProfileCanvas
+    public Button resetCounterButton; // On ProfileCanvas
+    public Button backButton; // On ProfileCanvas and ChangeGoalsCanvas
+    public Button plusButton; // On ChangeGoalsCanvas
+    public Button minusButton; // On ChangeGoalsCanvas
+    public Button doneButton; // On ChangeGoalsCanvas
+    public Button congratsDoneButton; // On CongratsCanvas
 
-    private string currentUsername = "Username";
-    private int currentGoalValue = 500;
+    private int goalValue = 5; // Default goal value
+    private bool isGoalReached = false; // Track if the goal has been reached
 
     void Start()
     {
-        if (mainMenuCanvas != null) mainMenuCanvas.SetActive(true);
-        if (profileCanvas != null) profileCanvas.SetActive(false);
-        if (changeGoalsCanvas != null) changeGoalsCanvas.SetActive(false);
-        if (editProfileCanvas != null) editProfileCanvas.SetActive(false);
+        // Initialize canvases
+        ShowMainMenuCanvas();
+        CongratsCanvas.SetActive(false); // Ensure CongratsCanvas is hidden initially
+        UpdateGoalText();
 
-        if (profileButton != null) profileButton.onClick.AddListener(OnProfileButtonClicked);
-        if (changeGoalsButton != null) changeGoalsButton.onClick.AddListener(OnChangeGoalsButtonClicked);
-        if (editProfileButton != null) editProfileButton.onClick.AddListener(OnEditProfileButtonClicked);
-        if (resetStepsButton != null) resetStepsButton.onClick.AddListener(OnResetStepsButtonClicked);
-        if (changeGoalsDoneButton != null) changeGoalsDoneButton.onClick.AddListener(OnChangeGoalsDoneButtonClicked);
-        if (changeGoalsPlusButton != null) changeGoalsPlusButton.onClick.AddListener(OnChangeGoalsPlusButtonClicked);
-        if (changeGoalsMinusButton != null) changeGoalsMinusButton.onClick.AddListener(OnChangeGoalsMinusButtonClicked);
-        if (editProfileDoneButton != null) editProfileDoneButton.onClick.AddListener(OnEditProfileDoneButtonClicked);
-        if (profileBackButton != null) profileBackButton.onClick.AddListener(OnProfileBackButtonClicked);
+        // Add button listeners
+        profileButton.onClick.AddListener(ShowProfileCanvas);
+        changeGoalsButton.onClick.AddListener(ShowChangeGoalsCanvas);
+        resetCounterButton.onClick.AddListener(OnResetCounterButtonPressed);
+        backButton.onClick.AddListener(ShowMainMenuCanvas);
+        plusButton.onClick.AddListener(() => OnChangeGoalsButtonPressed(1)); // Increment by 1
+        minusButton.onClick.AddListener(() => OnChangeGoalsButtonPressed(-1)); // Decrement by 1
+        doneButton.onClick.AddListener(OnDoneButtonPressed);
+        congratsDoneButton.onClick.AddListener(OnCongratsDoneButtonPressed);
+    }
 
-        // Add listener to input field's onValueChanged event
-        if (editUsernameInputField != null)
+    void Update()
+    {
+        // Check if the goal is reached and the CongratsCanvas is not already active
+        if (stepCounter.stepCount >= goalValue && !isGoalReached)
         {
-            editUsernameInputField.onValueChanged.AddListener(OnUsernameInputChanged);
-        }
-
-        UpdateUsernames();
-
-        if (changeGoalsValueText != null)
-        {
-            UpdateGoalText();
+            isGoalReached = true;
+            ShowCongratsCanvas();
         }
     }
 
-    void OnProfileButtonClicked()
+    public void ShowMainMenuCanvas()
     {
-        if (mainMenuCanvas != null) mainMenuCanvas.SetActive(false);
-        if (profileCanvas != null) profileCanvas.SetActive(true);
+        MainMenuCanvas.SetActive(true);
+        ProfileCanvas.SetActive(false);
+        ChangeGoalsCanvas.SetActive(false);
     }
 
-    void OnProfileBackButtonClicked()
+    public void ShowProfileCanvas()
     {
-        if (profileCanvas != null) profileCanvas.SetActive(false);
-        if (mainMenuCanvas != null) mainMenuCanvas.SetActive(true);
+        MainMenuCanvas.SetActive(false);
+        ProfileCanvas.SetActive(true);
+        ChangeGoalsCanvas.SetActive(false);
     }
 
-    // Input field value changed event
-    void OnUsernameInputChanged(string newUsername)
+    public void ShowChangeGoalsCanvas()
     {
-        currentUsername = newUsername;
-        UpdateUsernames();
+        MainMenuCanvas.SetActive(false);
+        ProfileCanvas.SetActive(false);
+        ChangeGoalsCanvas.SetActive(true);
     }
 
-    void OnChangeGoalsButtonClicked()
+    public void ShowCongratsCanvas()
     {
-        if (profileCanvas != null) profileCanvas.SetActive(false);
-        if (changeGoalsCanvas != null) changeGoalsCanvas.SetActive(true);
+        // Show CongratsCanvas as an overlay without disabling other canvases
+        CongratsCanvas.SetActive(true);
     }
 
-    void OnEditProfileButtonClicked()
+    public void OnChangeGoalsButtonPressed(int change)
     {
-        if (profileCanvas != null) profileCanvas.SetActive(false);
-        if (editProfileCanvas != null) editProfileCanvas.SetActive(true);
-
-        if (editUsernameInputField != null && profileUsernameText != null)
-        {
-            editUsernameInputField.text = profileUsernameText.text;
-        }
-    }
-
-    void OnEditProfileDoneButtonClicked()
-    {
-        if (editProfileCanvas != null) editProfileCanvas.SetActive(false);
-        if (profileCanvas != null) profileCanvas.SetActive(true);
-    }
-
-    void OnResetStepsButtonClicked()
-    {
-        Debug.Log("Reset Steps Clicked");
-    }
-
-    void OnChangeGoalsDoneButtonClicked()
-    {
-        if (changeGoalsCanvas != null) changeGoalsCanvas.SetActive(false);
-        if (profileCanvas != null) profileCanvas.SetActive(true);
-    }
-
-    void OnChangeGoalsPlusButtonClicked()
-    {
-        currentGoalValue += 10;
+        goalValue += change;
+        if (goalValue < 1) goalValue = 1; // Ensure goal value doesn't go below 1
         UpdateGoalText();
     }
 
-    void OnChangeGoalsMinusButtonClicked()
+    public void OnDoneButtonPressed()
     {
-        currentGoalValue -= 10;
-        if (currentGoalValue < 0) currentGoalValue = 0;
-        UpdateGoalText();
+        // Save the goal value (if needed) and return to ProfileCanvas
+        ShowProfileCanvas();
     }
 
-    void UpdateGoalText()
+    public void OnCongratsDoneButtonPressed()
     {
-        if (changeGoalsValueText != null)
-        {
-            changeGoalsValueText.text = currentGoalValue.ToString();
-        }
+        // Hide CongratsCanvas and allow the user to continue their previous activity
+        CongratsCanvas.SetActive(false);
+        isGoalReached = false; // Reset the goal reached flag
+
+        // Reset the step count to prevent CongratsCanvas from reappearing immediately
+        stepCounter.stepCount = 0;
+        stepCounter.distanceWalked = 0f;
+        stepCounter.UpdateUI();
     }
 
-    void UpdateUsernames()
+    public void OnResetCounterButtonPressed()
     {
-        if (profileUsernameText != null) profileUsernameText.text = currentUsername;
-        if (mainMenuUsernameText != null) mainMenuUsernameText.text = currentUsername;
+        stepCounter.stepCount = 0;
+        stepCounter.distanceWalked = 0f;
+        stepCounter.UpdateUI();
+    }
+
+    private void UpdateGoalText()
+    {
+        goalValueText.text = goalValue.ToString();
     }
 }
