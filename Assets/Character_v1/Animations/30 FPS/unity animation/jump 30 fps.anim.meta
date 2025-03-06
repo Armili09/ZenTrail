@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 715420bd03d8cd24488d737e8455d185
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 297474
+  packageName: Platformer Character Animated
+  packageVersion: 1.0
+  assetPath: Assets/Character_v1/Animations/30 FPS/unity animation/jump 30 fps.anim
+  uploadId: 696315

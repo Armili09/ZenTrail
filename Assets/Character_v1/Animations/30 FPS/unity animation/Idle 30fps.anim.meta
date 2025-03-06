@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bc05f00977ebc20499284c43789fdd1d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 297474
+  packageName: Platformer Character Animated
+  packageVersion: 1.0
+  assetPath: Assets/Character_v1/Animations/30 FPS/unity animation/Idle 30fps.anim
+  uploadId: 696315

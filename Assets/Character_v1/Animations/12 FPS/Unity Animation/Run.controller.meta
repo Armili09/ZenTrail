@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a04643a595706a54182c0c192a5341d5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 297474
+  packageName: Platformer Character Animated
+  packageVersion: 1.0
+  assetPath: Assets/Character_v1/Animations/12 FPS/Unity Animation/Run.controller
+  uploadId: 696315

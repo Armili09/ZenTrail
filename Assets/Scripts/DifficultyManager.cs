@@ -1,32 +1,34 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DifficultyManager : MonoBehaviour
 {
-    public OSRMDirections osrmDirections;
-    public LocationTracker locationTracker;
+    public enum Difficulty { Relaxation, DailyExercise, HighIntensity }
+    public Difficulty selectedDifficulty;
 
-    public void OnEasyButtonClicked()
+    public Button startTrailButton;
+
+    void Start()
     {
-        GenerateTrail(0.005f, 0.005f);
+        startTrailButton.interactable = false;
     }
 
-    public void OnMediumButtonClicked()
+    public void SetDifficulty(int difficulty)
     {
-        GenerateTrail(0.01f, 0.01f);
+        selectedDifficulty = (Difficulty)difficulty;
+        startTrailButton.interactable = true;
+        Debug.Log("Selected Difficulty: " + selectedDifficulty);
     }
 
-    public void OnHardButtonClicked()
+    public void StartTrail()
     {
-        GenerateTrail(0.02f, 0.02f);
-    }
+        Debug.Log("Starting Trail with Difficulty: " + selectedDifficulty);
+        // Save the selected difficulty to use in the AR Trail Scene
+        PlayerPrefs.SetString("SelectedDifficulty", selectedDifficulty.ToString());
+        PlayerPrefs.Save();
 
-    void GenerateTrail(float latOffset, float lngOffset)
-    {
-        float startLat = locationTracker.UserLatitude;
-        float startLng = locationTracker.UserLongitude;
-        float endLat = startLat + latOffset;
-        float endLng = startLng + lngOffset;
-
-        osrmDirections.FetchDirections(startLat, startLng, endLat, endLng);
+        // Load the AR Trail Scene
+        SceneManager.LoadScene("ARTrailScene");
     }
 }

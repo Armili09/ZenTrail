@@ -8,6 +8,7 @@ public class CanvasManager : MonoBehaviour
     public GameObject ProfileCanvas;
     public GameObject ChangeGoalsCanvas;
     public GameObject CongratsCanvas;
+    public GameObject DifficultyCanvas;
 
     public TextMeshProUGUI goalValueText;
     public StepCounter stepCounter;
@@ -20,8 +21,10 @@ public class CanvasManager : MonoBehaviour
     public Button minusButton; // On ChangeGoalsCanvas
     public Button doneButton; // On ChangeGoalsCanvas
     public Button congratsDoneButton; // On CongratsCanvas
+    public Button StartonMainButton; // On MainMenuCanvas
+    public Button backDCButton; // On DifficultyCanvas
 
-    private int goalValue = 5; // Default goal value
+    private int goalValue = 10; // Default goal value
     private bool isGoalReached = false; // Track if the goal has been reached
 
     void Start()
@@ -40,6 +43,8 @@ public class CanvasManager : MonoBehaviour
         minusButton.onClick.AddListener(() => OnChangeGoalsButtonPressed(-1)); // Decrement by 1
         doneButton.onClick.AddListener(OnDoneButtonPressed);
         congratsDoneButton.onClick.AddListener(OnCongratsDoneButtonPressed);
+        StartonMainButton.onClick.AddListener(ShowDifficultyCanvas);
+        backDCButton.onClick.AddListener(ShowMainMenuCanvas);
     }
 
     void Update()
@@ -77,6 +82,14 @@ public class CanvasManager : MonoBehaviour
     {
         // Show CongratsCanvas as an overlay without disabling other canvases
         CongratsCanvas.SetActive(true);
+    }
+
+    public void ShowDifficultyCanvas()
+    {
+        MainMenuCanvas.SetActive(false);
+        ProfileCanvas.SetActive(false);
+        ChangeGoalsCanvas.SetActive(false);
+        DifficultyCanvas.SetActive(true);
     }
 
     public void OnChangeGoalsButtonPressed(int change)

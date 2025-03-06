@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 04b27277d0ed97046bedfeaf74f39f64
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 297474
+  packageName: Platformer Character Animated
+  packageVersion: 1.0
+  assetPath: Assets/Character_v1/Animations/30 FPS/unity animation/walk 30fps.anim
+  uploadId: 696315
