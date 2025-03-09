@@ -23,7 +23,7 @@ public class StepCounter : MonoBehaviour
         // Ensure the Animator is set to Idle by default
         if (characterAnimator != null)
         {
-            characterAnimator.SetBool("IsWalking", false);
+            characterAnimator.Play("Pen_idle"); // Play the idle animation by default
         }
     }
 
@@ -46,7 +46,7 @@ public class StepCounter : MonoBehaviour
             // Switch to Walk animation
             if (characterAnimator != null)
             {
-                characterAnimator.SetBool("IsWalking", true);
+                characterAnimator.Play("Pen_walk"); // Play the walk animation
             }
         }
         else if (delta < stepThreshold && isStepDetected)
@@ -60,7 +60,7 @@ public class StepCounter : MonoBehaviour
         // Switch to Idle animation if the user has been inactive for the threshold time
         if (timeSinceLastStep >= idleThreshold && characterAnimator != null)
         {
-            characterAnimator.SetBool("IsWalking", false);
+            characterAnimator.Play("Pen_idle"); // Play the idle animation
         }
 
         lastAcceleration = currentAcceleration;

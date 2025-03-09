@@ -1,0 +1,10 @@
+# ninja log v5
+0	5383	7630824600080486	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	d693f4c583aa4947
+596	5389	7630824610084221	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	2e0281b1d674d81f
+1320	5391	7630824614389014	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	537908774d1b1329
+2030	5392	7630824620662711	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	45fd531864113cc4
+2654	5394	7630824633099367	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	ee551bb1d11c7134
+3435	5396	7630824634026422	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	a879a9ef257d6de0
+4060	5437	7630824640715499	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	636664fe28a137d8
+4704	6130	7630824647403081	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	6ce7555f6cf3318e
+6131	9288	7630824677792859	D:/Unity/ZenTrail_V1/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/5r6t3p4h/obj/armeabi-v7a/libgame.so	3fabe45fe9338b66
