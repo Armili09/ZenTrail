@@ -1,1 +1,2 @@
-### Step Counter
+### Completed Feature - Step Counter
+Version: Android 
