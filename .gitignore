@@ -1,0 +1,31 @@
+# Ignore Unity-generated files
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+
+# Ignore crash reports
+*.crash
+
+# Ignore auto-generated Visual Studio/JetBrains Rider files
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+
+# Ignore system files
+.DS_Store
+Thumbs.db
