@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 594a516382058e2419589605c02e7a7d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202525
+  packageName: 'UX Flat Icons [Free]'
+  packageVersion: 2019.1.1
+  assetPath: Assets/_Heathen Engineering/Samples/UX Examples/Flat Icons [Free]/ToggleSetAnimatorBoolean.cs
+  uploadId: 451587

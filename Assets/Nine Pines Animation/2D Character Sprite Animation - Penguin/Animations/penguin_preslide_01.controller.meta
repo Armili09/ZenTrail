@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b6275c834eeb61641b24f6c471e49559
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 236747
+  packageName: 2D Character Sprite Animation - Penguin
+  packageVersion: 1.0
+  assetPath: Assets/Nine Pines Animation/2D Character Sprite Animation - Penguin/Animations/penguin_preslide_01.controller
+  uploadId: 536487

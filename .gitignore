@@ -13,6 +13,7 @@ MemoryCaptures/
 
 # Ignore auto-generated Visual Studio/JetBrains Rider files
 .vscode/
+.vs/
 *.csproj
 *.unityproj
 *.sln
